@@ -5,8 +5,11 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tiago.reiz.DesafioItau.adapters.in.controllers.dtos.statistic;
 import tiago.reiz.DesafioItau.adapters.in.controllers.dtos.transactionRequest;
 import tiago.reiz.DesafioItau.core.interfaces.transactionService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -26,6 +29,11 @@ public class transactionController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
+    }
+
+    @GetMapping("estatisticas")
+    public ResponseEntity<statistic> getStatistics(){
+        return ResponseEntity.ok(service.getStatistics());
     }
 
 }
