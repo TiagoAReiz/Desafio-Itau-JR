@@ -19,4 +19,9 @@ public class transactionRepositoryImpl implements transactionRepository {
     public List<transaction> getAllTransactions() {
         return transactions;
     }
+
+    @Override
+    public void deleteAllTransactions(){
+        transactions.clear();
+    }
 }

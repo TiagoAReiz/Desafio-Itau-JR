@@ -38,4 +38,9 @@ public class transactionServiceImpl implements transactionService {
         statistic statistics = new statistic(count,sum,avg,min,max);
         return statistics;
     }
+
+    @Override
+    public void deleteAll(){
+        repo.deleteAllTransactions();
+    }
 }

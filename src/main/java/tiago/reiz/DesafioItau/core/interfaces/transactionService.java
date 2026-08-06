@@ -8,4 +8,5 @@ import java.util.List;
 public interface transactionService {
     void createTransaction(transactionRequest transaction);
     statistic getStatistics();
+    void deleteAll();
 }

@@ -8,4 +8,6 @@ public interface transactionRepository {
     void createTransaction(transaction transaction);
 
     List<transaction> getAllTransactions();
+
+    void deleteAllTransactions();
 }

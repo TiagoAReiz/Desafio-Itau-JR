@@ -36,4 +36,15 @@ public class transactionController {
         return ResponseEntity.ok(service.getStatistics());
     }
 
+    @DeleteMapping("transacoes")
+    public ResponseEntity<Void> deleteAllTransactions(){
+        try {
+            service.deleteAll();
+            return ResponseEntity.ok().build();
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+    }
+
 }
