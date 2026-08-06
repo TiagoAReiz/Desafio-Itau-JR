@@ -1,0 +1,31 @@
+package tiago.reiz.DesafioItau.adapters.in.controllers;
+
+
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import tiago.reiz.DesafioItau.adapters.in.controllers.dtos.transactionRequest;
+import tiago.reiz.DesafioItau.core.interfaces.transactionService;
+
+@RestController
+@RequestMapping
+public class transactionController {
+    private final transactionService service;
+    transactionController(transactionService service){
+        this.service = service;
+    }
+
+    @PostMapping("transacao")
+    public ResponseEntity<Void> createTransaction(@RequestBody @Valid transactionRequest transaction){
+        try {
+            service.createTransaction(transaction);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+
+    }
+
+}
