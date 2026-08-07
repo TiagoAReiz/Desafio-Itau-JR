@@ -21,13 +21,11 @@ public class transactionController {
 
     @PostMapping("transacao")
     public ResponseEntity<Void> createTransaction(@RequestBody @Valid transactionRequest transaction){
-        try {
-            service.createTransaction(transaction);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+
+        service.createTransaction(transaction);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+
+
 
     }
 
@@ -38,12 +36,10 @@ public class transactionController {
 
     @DeleteMapping("transacoes")
     public ResponseEntity<Void> deleteAllTransactions(){
-        try {
+
             service.deleteAll();
             return ResponseEntity.ok().build();
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        }
+
 
     }
 
