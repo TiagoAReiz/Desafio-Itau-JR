@@ -4,6 +4,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.PositiveOrZero;
 
+import tiago.reiz.desafioitau.core.entities.Transaction;
+
 import java.time.OffsetDateTime;
 
 /**
@@ -21,4 +23,8 @@ public record TransactionRequest(
         @NotNull(message = "o campo 'dataHora' e obrigatorio")
         @PastOrPresent(message = "o campo 'dataHora' nao pode estar no futuro")
         OffsetDateTime dataHora) {
+
+    public Transaction toEntity() {
+        return new Transaction(valor, dataHora);
+    }
 }

@@ -1,12 +1,17 @@
 package tiago.reiz.desafioitau.core.interfaces;
 
-import tiago.reiz.desafioitau.adapters.in.controllers.dtos.StatisticResponse;
-import tiago.reiz.desafioitau.adapters.in.controllers.dtos.TransactionRequest;
+import tiago.reiz.desafioitau.core.entities.Statistics;
+import tiago.reiz.desafioitau.core.entities.Transaction;
 
-import java.util.List;
-
+/**
+ * Porta de entrada com os casos de uso da API.
+ * Trabalha apenas com objetos de dominio, sem depender de DTOs HTTP.
+ */
 public interface TransactionService {
-    void createTransaction(TransactionRequest transaction);
-    StatisticResponse getStatistics();
+
+    void register(Transaction transaction);
+
+    Statistics getStatistics();
+
     void deleteAll();
 }
