@@ -19,7 +19,7 @@ public class TransactionController {
         this.service = service;
     }
 
-    @PostMapping("transacao")
+    @PostMapping("/transacao")
     public ResponseEntity<Void> createTransaction(@RequestBody @Valid TransactionRequest transaction){
 
         service.createTransaction(transaction);
@@ -29,12 +29,12 @@ public class TransactionController {
 
     }
 
-    @GetMapping("estatisticas")
+    @GetMapping("/estatistica")
     public ResponseEntity<StatisticResponse> getStatistics(){
         return ResponseEntity.ok(service.getStatistics());
     }
 
-    @DeleteMapping("transacoes")
+    @DeleteMapping("/transacao")
     public ResponseEntity<Void> deleteAllTransactions(){
 
             service.deleteAll();
