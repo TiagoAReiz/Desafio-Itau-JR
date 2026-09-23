@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
  *       regra de aceite (campo ausente, valor negativo, data no futuro).</li>
  *   <li>{@code 400 Bad Request} sem corpo: a API nao compreendeu a requisicao
  *       (JSON malformado, tipos incompativeis, data fora do padrao ISO 8601, corpo vazio).</li>
+ *   <li>{@code 415 Unsupported Media Type} sem corpo: a API aceita apenas JSON.</li>
  * </ul>
  *
  * <p>O enunciado exige respostas <strong>sem corpo</strong>; por isso o motivo de cada erro
@@ -42,5 +44,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Void> handleUnreadableMessage(HttpMessageNotReadableException ex) {
         log.warn("Requisicao nao compreendida (400): {}", ex.getMostSpecificCause().getMessage());
         return ResponseEntity.badRequest().build();
+    }
+
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<Void> handleUnsupportedMediaType(HttpMediaTypeNotSupportedException ex) {
+        log.warn("Content-Type nao suportado (415): {}", ex.getContentType());
+        return ResponseEntity.status(ex.getStatusCode()).build();
     }
 }
