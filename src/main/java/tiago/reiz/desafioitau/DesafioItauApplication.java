@@ -1,4 +1,4 @@
-package tiago.reiz.DesafioItau;
+package tiago.reiz.desafioitau;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

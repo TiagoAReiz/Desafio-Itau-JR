@@ -1,4 +1,4 @@
-package tiago.reiz.DesafioItau.adapters.in.controllers.dtos;
+package tiago.reiz.desafioitau.adapters.in.controllers.dtos;
 
 
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDateTime;
 
-public record transactionRequest(
+public record TransactionRequest(
         @NotNull(message = "O valor não pode ser nulo")
         @Positive(message = "O valor enviado deve ser obrigatoriamente maior que zero")
         double valor,

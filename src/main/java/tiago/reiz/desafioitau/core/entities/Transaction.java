@@ -1,15 +1,15 @@
-package tiago.reiz.DesafioItau.core.entities;
+package tiago.reiz.desafioitau.core.entities;
 
 import java.time.LocalDateTime;
 
-public class transaction {
+public class Transaction {
     private double value;
     private LocalDateTime dataHora;
 
-    public transaction() {
+    public Transaction() {
     }
 
-    public transaction(double value, LocalDateTime dataHora) {
+    public Transaction(double value, LocalDateTime dataHora) {
         this.value = value;
         this.dataHora = dataHora;
     }

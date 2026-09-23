@@ -1,4 +1,4 @@
-package tiago.reiz.DesafioItau.adapters.in.controllers.config;
+package tiago.reiz.desafioitau.adapters.in.controllers.config;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
