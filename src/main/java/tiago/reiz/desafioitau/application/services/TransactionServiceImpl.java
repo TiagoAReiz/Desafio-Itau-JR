@@ -30,11 +30,11 @@ public class TransactionServiceImpl implements TransactionService {
         List<Transaction>transactions = repo.getAllTransactions();
         int count = transactions.size();
         double sum = transactions.stream()
-                .mapToDouble(elemento -> elemento.getValue())
+                .mapToDouble(elemento -> elemento.valor())
                 .sum();
-        double avg = transactions.stream().mapToDouble(elemento -> elemento.getValue()).average().orElse(0);
-        double min = transactions.stream().mapToDouble(elemento -> elemento.getValue()).min().orElse(0);
-        double max = transactions.stream().mapToDouble(elemento -> elemento.getValue()).max().orElse(0);
+        double avg = transactions.stream().mapToDouble(elemento -> elemento.valor()).average().orElse(0);
+        double min = transactions.stream().mapToDouble(elemento -> elemento.valor()).min().orElse(0);
+        double max = transactions.stream().mapToDouble(elemento -> elemento.valor()).max().orElse(0);
         StatisticResponse statistics = new StatisticResponse(count,sum,avg,min,max);
         return statistics;
     }

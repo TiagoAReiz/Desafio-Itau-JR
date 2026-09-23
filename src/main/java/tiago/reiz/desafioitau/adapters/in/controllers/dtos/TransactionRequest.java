@@ -1,18 +1,24 @@
 package tiago.reiz.desafioitau.adapters.in.controllers.dtos;
 
-
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
+/**
+ * Corpo da requisicao de {@code POST /transacao}.
+ *
+ * <p>Os nomes dos campos seguem exatamente o enunciado ({@code valor} e {@code dataHora}).
+ * Tipos wrapper sao usados para que a ausencia do campo seja detectada como {@code null}
+ * (com {@code double} primitivo, um {@code valor} ausente viraria {@code 0} silenciosamente).
+ */
 public record TransactionRequest(
-        @NotNull(message = "O valor não pode ser nulo")
-        @Positive(message = "O valor enviado deve ser obrigatoriamente maior que zero")
-        double valor,
+        @NotNull(message = "o campo 'valor' e obrigatorio")
+        @PositiveOrZero(message = "o campo 'valor' nao pode ser negativo")
+        Double valor,
 
-        @PastOrPresent(message = "A data e hora não podem estar no futuro")
-        LocalDateTime dataHora) {
+        @NotNull(message = "o campo 'dataHora' e obrigatorio")
+        @PastOrPresent(message = "o campo 'dataHora' nao pode estar no futuro")
+        OffsetDateTime dataHora) {
 }
