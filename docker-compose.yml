@@ -1,0 +1,8 @@
+services:
+  api:
+    build: .
+    image: desafio-itau
+    ports:
+      - "8080:8080"
+    environment:
+      ESTATISTICA_JANELA_SEGUNDOS: "60"
